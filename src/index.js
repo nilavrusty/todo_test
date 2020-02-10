@@ -1,12 +1,15 @@
 const express = require ('express');
-require ('./db/mongoose');
+const connetDb = require ('./db/mongoose');
+
 var cors = require ('cors');
 
 const userRouter = require ('./routers/user');
 const taskRouter = require ('./routers/task');
 
+connetDb ();
+
 const app = express ();
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 app.use (cors ());
 app.use (express.json ());
 app.use (userRouter);
